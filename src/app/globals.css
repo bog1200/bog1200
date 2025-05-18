@@ -3,6 +3,11 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-nebula-sans: "Nebula Sans"
+}
+
+@theme {
+
 }
 
 /*
@@ -38,5 +43,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Henny Penny, sans-serif;
+  font-family: var(--font-nebula-sans);
 }
