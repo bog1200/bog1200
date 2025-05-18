@@ -43,5 +43,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-nebula-sans);
+  font-family: var(--font-nebula-sans), system-ui;
 }
