@@ -45,3 +45,18 @@ body {
   background: var(--background);
   font-family: var(--font-nebula-sans), system-ui;
 }
+
+@layer utilities {
+  @keyframes loadingBar {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  .animate-loadingBar {
+    animation: loadingBar 7.5s linear infinite;
+  }
+}
