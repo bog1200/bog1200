@@ -1,14 +1,23 @@
 "use client";
 
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const AuroraCanvas = dynamic(() => import("@/components/AuroraCanvas"), {
+    ssr: false,
+    loading: () => <div className="h-full w-full bg-gradient-to-b from-emerald-500/10 via-purple-500/5 to-transparent" />,
+});
+
 export default function Home() {
     return (
-        <main className="relative min-h-screen bg-[#0b0315] text-rose-100 antialiased">
+        <main className="relative min-h-screen bg-[#05020c] text-rose-100 antialiased">
             <section className="relative isolate overflow-hidden pb-24 pt-16 sm:pt-28">
                 <div className="absolute inset-x-0 top-0 h-[60vh] min-h-[360px] max-h-[520px]">
-                    <div className="aurora aurora-one" />
-                    <div className="aurora aurora-two" />
-                    <div className="aurora aurora-three" />
-                    <div className="aurora-fade" />
+                    <Suspense>
+                        <AuroraCanvas />
+                    </Suspense>
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[#05020c]/70 to-[#05020c]" />
+                    <div className="aurora-grain" />
                 </div>
 
                 <div className="relative z-10 mx-auto flex max-w-3xl justify-center px-6">
