@@ -28,11 +28,14 @@ export default async function Portfolio({ params }: { params: Promise<{ locale: 
             <LangSwitch current={locale} label={t.switchLabel} />
             <MotionToggle pauseLabel={t.pauseMotion} playLabel={t.playMotion} />
 
-            <header className="relative z-10 flex min-h-[100svh] flex-col justify-end overflow-hidden">
-                <HeroCanvas label={t.canvasLabel} />
-                <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-[#03050b]" />
+            <header className="relative z-10 flex min-h-[100svh] flex-col justify-center overflow-hidden">
+                {/* Fade the canvas itself out rather than painting an opaque gradient over it: the fixed sky shows
+                    through the transparent canvas, so the hero blends into the page without a visible edge. */}
+                <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,black_45%,transparent_95%)]">
+                    <HeroCanvas label={t.canvasLabel} />
+                </div>
 
-                <div className="relative mx-auto w-full max-w-4xl px-5 pb-14 sm:px-8 sm:pb-20">
+                <div className="relative mx-auto w-full max-w-4xl px-5 pt-[calc(20svh+2rem)] pb-8 sm:px-8">
                     <p className="font-mono text-xs text-emerald-300/80 sm:text-sm">
                         ~/bog1200 <span className="text-cyan-300/80">(main)</span> $ whoami
                     </p>
@@ -84,7 +87,7 @@ export default async function Portfolio({ params }: { params: Promise<{ locale: 
                 </div>
             </header>
 
-            <main className="relative z-10 mx-auto w-full max-w-4xl px-3 pb-24 sm:px-8">
+            <main className="relative z-10 mx-auto w-full max-w-4xl px-3 pt-6 pb-24 sm:px-8 sm:pt-8">
                 <section id="log" aria-labelledby="log-title" className="scroll-mt-8">
                     <h2 id="log-title" className="mb-6 flex flex-wrap items-baseline gap-x-3 px-2 sm:px-0">
                         <span className="text-2xl font-semibold text-white sm:text-3xl">{t.log}</span>
