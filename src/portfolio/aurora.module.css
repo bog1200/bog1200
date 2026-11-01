@@ -1,0 +1,106 @@
+.sky {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 70% at 50% 115%, #0a2a2a 0%, transparent 60%),
+        radial-gradient(90% 60% at 80% -10%, #1a1036 0%, transparent 60%),
+        #03050b;
+}
+
+.stars {
+    position: absolute;
+    inset: -50%;
+    opacity: 0.55;
+    background-image:
+        radial-gradient(1px 1px at 23px 41px, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 137px 89px, #cffafe 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 211px 173px, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 61px 233px, #e9d5ff 50%, transparent 51%),
+        radial-gradient(1px 1px at 179px 17px, #fff 50%, transparent 51%);
+    background-size: 260px 260px;
+    animation: twinkle 9s ease-in-out infinite alternate;
+}
+
+.band {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    mix-blend-mode: screen;
+    opacity: 0.32;
+    will-change: transform;
+}
+
+.b1 {
+    width: 85vw;
+    height: 38vh;
+    left: -15vw;
+    top: 4vh;
+    background: linear-gradient(90deg, transparent, #10b981 30%, #22d3ee 65%, transparent);
+    animation: drift1 26s ease-in-out infinite alternate;
+}
+
+.b2 {
+    width: 70vw;
+    height: 30vh;
+    right: -20vw;
+    top: 22vh;
+    background: linear-gradient(90deg, transparent, #8b5cf6 35%, #ec4899 70%, transparent);
+    animation: drift2 32s ease-in-out infinite alternate;
+}
+
+.b3 {
+    width: 60vw;
+    height: 45vh;
+    left: 15vw;
+    top: 55vh;
+    opacity: 0.18;
+    background: linear-gradient(90deg, transparent, #2dd4bf 40%, #6366f1 75%, transparent);
+    animation: drift3 38s ease-in-out infinite alternate;
+}
+
+/* Thin vertical rays, masked so they only show near the top of the viewport. */
+.rays {
+    position: absolute;
+    inset: 0 -10%;
+    opacity: 0.35;
+    background: repeating-linear-gradient(90deg, transparent 0 7px, rgb(52 211 153 / 0.07) 7px 9px, transparent 9px 19px);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 55%);
+    animation: sway 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift1 {
+    from { transform: translate3d(0, 0, 0) rotate(-10deg) scaleY(1); }
+    to { transform: translate3d(12vw, 5vh, 0) rotate(-3deg) scaleY(1.35); }
+}
+
+@keyframes drift2 {
+    from { transform: translate3d(0, 0, 0) rotate(8deg); }
+    to { transform: translate3d(-14vw, -4vh, 0) rotate(-2deg) scaleY(1.25); }
+}
+
+@keyframes drift3 {
+    from { transform: translate3d(0, 0, 0) rotate(-4deg) scale(1); }
+    to { transform: translate3d(-8vw, -6vh, 0) rotate(6deg) scale(1.15); }
+}
+
+@keyframes sway {
+    from { transform: translateX(0) skewX(-4deg); }
+    to { transform: translateX(4%) skewX(4deg); }
+}
+
+@keyframes twinkle {
+    from { opacity: 0.35; }
+    to { opacity: 0.65; }
+}
+
+/* Still by default with reduced motion, unless the visitor explicitly pressed play. */
+@media (prefers-reduced-motion: reduce) {
+    :global(html:not([data-motion="playing"])) .stars,
+    :global(html:not([data-motion="playing"])) .band,
+    :global(html:not([data-motion="playing"])) .rays {
+        animation: none;
+    }
+}
