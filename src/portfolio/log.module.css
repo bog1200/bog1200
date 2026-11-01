@@ -1,0 +1,19 @@
+/* Single-category view: hide every row, lane, band and label of the other categories.
+   HEAD, the initial commit and main carry no data-kind, so they always stay. */
+.log[data-only="EDU"] [data-kind]:not([data-kind="EDU"]),
+.log[data-only="EXP"] [data-kind]:not([data-kind="EXP"]),
+.log[data-only="PRJ"] [data-kind]:not([data-kind="PRJ"]),
+.log[data-only="CERT"] [data-kind]:not([data-kind="CERT"]),
+.log[data-only="EVT"] [data-kind]:not([data-kind="EVT"]) {
+    display: none;
+}
+
+/* Elements that belong to one view only (e.g. the open-branch count): show the one for the active filter. */
+.log:not([data-only]) [data-mode]:not([data-mode="all"]),
+.log[data-only="EDU"] [data-mode]:not([data-mode="EDU"]),
+.log[data-only="EXP"] [data-mode]:not([data-mode="EXP"]),
+.log[data-only="PRJ"] [data-mode]:not([data-mode="PRJ"]),
+.log[data-only="CERT"] [data-mode]:not([data-mode="CERT"]),
+.log[data-only="EVT"] [data-mode]:not([data-mode="EVT"]) {
+    display: none;
+}

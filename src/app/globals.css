@@ -29,15 +29,8 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #03050b;
+  --foreground: #e2e8f0;
 }
 
 body {
@@ -46,17 +39,9 @@ body {
   font-family: var(--font-nebula-sans), system-ui;
 }
 
-@layer utilities {
-  @keyframes loadingBar {
-    0% {
-      transform: translateX(-200%);
-    }
-    100% {
-      transform: translateX(200%);
-    }
-  }
-
-  .animate-loadingBar {
-    animation: loadingBar 7.5s linear infinite;
-  }
+/* Pause toggle (see src/portfolio/motion.ts): freeze every CSS animation in place. */
+html[data-motion="paused"] *,
+html[data-motion="paused"] *::before,
+html[data-motion="paused"] *::after {
+  animation-play-state: paused !important;
 }
