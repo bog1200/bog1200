@@ -85,7 +85,7 @@ export const profile = {
             group: "tools",
             items: [
                 "Git", "GitHub", "Docker", "Docker Compose", "Multipass", "cloud-init", "Ethereum (ethers.js, Sepolia)", "WordPress", "WooCommerce",
-                "UiPath (Studio, Robots, Orchestrator)", "Arduino", "OpenGL", "Java Swing",
+                "UiPath (Studio, Robots, Orchestrator)", "Android", "NFC (Host Card Emulation, JMRTD)", "Arduino", "OpenGL", "Java Swing",
             ].map(same),
         },
         {
@@ -100,6 +100,7 @@ export const profile = {
                 { en: "Payment gateway integration", ro: "Integrarea procesatorilor de plăți", se: "Integration av betallösningar" },
                 same("Blockchain"),
                 { en: "Decentralised identity (DIDs)", ro: "Identitate descentralizată (DID)", se: "Decentraliserad identitet (DID)" },
+                { en: "Electronic identity (eID, ICAO 9303)", ro: "Identitate electronică (eID, ICAO 9303)", se: "Elektronisk identitet (eID, ICAO 9303)" },
                 { en: "Robotic process automation (RPA)", ro: "Automatizarea proceselor (RPA)", se: "Robotiserad processautomation (RPA)" },
                 { en: "Cybersecurity", ro: "Securitate cibernetică", se: "Cybersäkerhet" },
                 { en: "Penetration testing", ro: "Testare de penetrare", se: "Penetrationstestning" },
@@ -162,8 +163,8 @@ export const branches: BranchEntry[] = [
         location: stockholm,
         start: "2025-08",
         end: null,
-        tags: [{ en: "Distributed systems", ro: "Sisteme distribuite", se: "Distribuerade system" }],
-        bullets: [],
+        tags: ["120 ECTS", { en: "Distributed systems", ro: "Sisteme distribuite", se: "Distribuerade system" }],
+        bullets: [same("120 ECTS.")],
     },
     {
         id: "rn",
@@ -371,6 +372,37 @@ export const branches: BranchEntry[] = [
                 se: "Byggde webbapplikationer med Next.js (React) och Tailwind CSS, med Supabase-databaser och molndriftsättning på Vercel.",
             },
         ],
+    },
+    {
+        id: "eid-auth",
+        branch: "PRJ/EID-AUTH",
+        kind: "PRJ",
+        title: {
+            en: "eID Authenticator – NFC Identity Login and Attendance",
+            ro: "eID Authenticator – autentificare și prezență prin NFC",
+            se: "eID Authenticator – NFC-inloggning och närvaro",
+        },
+        start: "2024-04",
+        end: "2024-05",
+        tags: ["Java", "Android", "NFC", "Host Card Emulation", "JMRTD", "BouncyCastle", "ICAO 9303", "JWT", "TOTP", { en: "eIDAS-style login", ro: "Autentificare de tip eIDAS", se: "Inloggning i eIDAS-stil" }],
+        bullets: [
+            {
+                en: "Built an Android app that replaces account registration with national eID login (an eIDAS-style approach): reads ICAO 9303 ID cards and passports over NFC (PACE with BAC fallback) and verifies authenticity through Chip Authentication and Passive Authentication against a CSCA master list.",
+                ro: "Am construit o aplicație Android care înlocuiește crearea de conturi cu autentificarea prin actul de identitate electronic (o abordare de tip eIDAS): citește prin NFC cărți de identitate și pașapoarte conforme ICAO 9303 (PACE, cu BAC ca alternativă) și le verifică autenticitatea prin Chip Authentication și Passive Authentication pe baza unei liste master CSCA.",
+                se: "Byggde en Android-app som ersätter kontoregistrering med inloggning via nationell e-legitimation (ett eIDAS-liknande angreppssätt): läser ID-kort och pass enligt ICAO 9303 via NFC (PACE med BAC som reserv) och verifierar äktheten med Chip Authentication och Passive Authentication mot en CSCA-masterlista.",
+            },
+            {
+                en: "Implemented phone-to-phone attendance validation by emulating an NFC Forum Type 4 tag with Host Card Emulation (custom APDU handling, NDEF payload).",
+                ro: "Am implementat validarea prezenței de la telefon la telefon, emulând un tag NFC Forum Type 4 prin Host Card Emulation (procesare APDU proprie, mesaj NDEF).",
+                se: "Implementerade närvarovalidering mellan telefoner genom att emulera en NFC Forum Type 4-tagg med Host Card Emulation (egen APDU-hantering, NDEF-meddelande).",
+            },
+            {
+                en: "Connected to a REST backend using JWT access/refresh tokens, and added TOTP code generation.",
+                ro: "Am conectat aplicația la un backend REST cu tokenuri JWT de acces și reîmprospătare și am adăugat generarea de coduri TOTP.",
+                se: "Kopplade appen till en REST-backend med JWT-åtkomst- och förnyelsetokens samt lade till generering av TOTP-koder.",
+            },
+        ],
+        links: [{ label: "github.com/bog1200/moodle_plus_plus_authenticator", href: "https://github.com/bog1200/moodle_plus_plus_authenticator" }],
     },
     {
         id: "axsys",
